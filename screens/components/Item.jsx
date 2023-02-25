@@ -4,6 +4,8 @@ import { useColorScheme } from "react-native";
 
 const Item = (props) => {
   const colorScheme = useColorScheme();
+  const displaytitle =
+    props.title.length > 20 ? props.title.slice(0, 20) + "..." : props.title;
   return (
     <View
       style={{
@@ -24,7 +26,7 @@ const Item = (props) => {
             fontSize: 16,
           }}
         >
-          {props.title || "Loading..."}
+          {displaytitle || "Loading..."}
         </Text>
         <Text
           style={{
@@ -32,7 +34,7 @@ const Item = (props) => {
             fontSize: 14,
           }}
         >
-          {props.status || "Loading..."}
+          {props.status}
         </Text>
       </View>
     </View>
