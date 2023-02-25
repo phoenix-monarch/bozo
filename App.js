@@ -10,6 +10,7 @@ import { Icon } from "@rneui/base";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import BrowseScreen from "./screens/BrowseScreen";
 import LibraryScreen from "./screens/LibraryScreen";
+import AboutScreen from "./screens/extras/AboutScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -32,6 +33,13 @@ export default function App() {
             headerShown: false,
           }}
           component={SearchScreen}
+        />
+        <Stack.Screen
+          name="About"
+          options={{
+            headerShown: false,
+          }}
+          component={AboutScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

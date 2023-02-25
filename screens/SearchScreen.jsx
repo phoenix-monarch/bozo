@@ -18,7 +18,7 @@ const SearchScreen = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://gogoanime.consumet.stream/search?keyw=${searchkeyowrd}`
+        `https://animeapi.jabed.me/zoro/search?keyw=${searchkeyowrd}`
       );
       setResults(response.data);
       setLoading(false);

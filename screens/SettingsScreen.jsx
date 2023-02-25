@@ -1,9 +1,16 @@
-import { useColorScheme, Text } from "react-native";
+import {
+  useColorScheme,
+  Text,
+  ScrollView,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts, Comfortaa_700Bold } from "@expo-google-fonts/comfortaa";
+import ListItem from "./components/ListItem";
 
-const SettingsScreen = () => {
+const SettingsScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
 
   let [fontsLoaded] = useFonts({
@@ -31,6 +38,25 @@ const SettingsScreen = () => {
       >
         Settings
       </Text>
+      <ScrollView>
+        <View
+          style={{
+            marginTop: 20,
+            backgroundColor: colorScheme === "dark" ? "#171717" : "#fff",
+          }}
+        >
+          <ListItem icon="account-circle" title="Account" />
+          <ListItem icon="translate" title="Translations" />
+          <ListItem icon="delete-forever" title="Clear History" />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("About");
+            }}
+          >
+            <ListItem icon="info" title="About" />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
