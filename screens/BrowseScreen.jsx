@@ -5,9 +5,8 @@ import { useFonts, Comfortaa_600SemiBold } from "@expo-google-fonts/comfortaa";
 import Genere from "./components/Genere";
 import { SearchBar } from "@rneui/base";
 
-const BrowseScreen = () => {
+const BrowseScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
-  const [search, setSearch] = React.useState("");
   let [fontsLoaded] = useFonts({
     Comfortaa_600SemiBold,
   });
@@ -43,8 +42,7 @@ const BrowseScreen = () => {
           inputContainerStyle={{ backgroundColor: "transparent" }}
           inputStyle={{ borderWidth: 0 }}
           placeholder="Search"
-          onChangeText={(text) => setSearch(text)}
-          value={search}
+          onPressIn={() => navigation.navigate("Search")}
         />
         <Genere name="action" />
         <Genere name="adventure" />
