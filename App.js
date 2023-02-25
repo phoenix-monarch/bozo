@@ -8,6 +8,8 @@ import SettingsScreen from "./screens/SettingsScreen";
 import SearchScreen from "./screens/SearchScreen";
 import { Icon } from "@rneui/base";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
+import BrowseScreen from "./screens/BrowseScreen";
+import LibraryScreen from "./screens/LibraryScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -57,6 +59,24 @@ function Tabs() {
           ),
         }}
         component={HomeScreen}
+      />
+      <Tab.Screen
+        name="Browse"
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon name="category" size={24} color={color} />
+          ),
+        }}
+        component={BrowseScreen}
+      />
+      <Tab.Screen
+        name="library"
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Icon name="video-library" size={24} color={color} />
+          ),
+        }}
+        component={LibraryScreen}
       />
       <Tab.Screen
         name="Settings"
