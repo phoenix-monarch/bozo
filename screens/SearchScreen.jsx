@@ -1,6 +1,6 @@
 import axios from "axios";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView, useColorScheme, View } from "react-native";
+import { ScrollView, useColorScheme, View, Text } from "react-native";
 import { SearchBar } from "@rneui/themed";
 import { useState } from "react";
 import Lottie from "lottie-react-native";
@@ -57,6 +57,9 @@ const SearchScreen = () => {
           loop
         />
       )}
+      {errorMessage ? (
+        <Lottie source={require("../assets/animations/error.json")} autoPlay />
+      ) : null}
       <ScrollView>
         <View
           style={{
