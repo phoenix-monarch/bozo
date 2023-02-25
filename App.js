@@ -2,10 +2,12 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useColorScheme } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import SettingsScreen from "./screens/SettingsScreen";
 import SearchScreen from "./screens/SearchScreen";
 import { Icon } from "@rneui/base";
+import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -13,6 +15,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+      <ExpoStatusBar style="auto" />
       <Stack.Navigator>
         <Stack.Screen
           name="Tabs"
@@ -34,8 +37,18 @@ export default function App() {
 }
 
 function Tabs() {
+  const scheme = useColorScheme();
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      shifting={true}
+      initialRouteName="Home"
+      barStyle={{
+        backgroundColor: scheme === "dark" ? "#171717" : "#fff",
+      }}
+      activeColor={scheme === "dark" ? "#fff" : "#272121"}
+      keyboardHidesNavigationBar={true}
+      backBehavior="none"
+    >
       <Tab.Screen
         name="Home"
         options={{

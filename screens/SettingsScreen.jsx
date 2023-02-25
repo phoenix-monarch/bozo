@@ -1,13 +1,17 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { useColorScheme } from "react-native";
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const SettingsScreen = () => {
+const SettingsScreen = ({ navigation }) => {
+  const colorScheme = useColorScheme();
   return (
-    <SafeAreaView>
-      <Text>SettingsScreen</Text>
-    </SafeAreaView>
-  )
-}
+    <SafeAreaView
+      style={{
+        backgroundColor: colorScheme === "dark" ? "#171717" : "#fff",
+        height: "100%",
+      }}
+    ></SafeAreaView>
+  );
+};
 
-export default SettingsScreen
+export default SettingsScreen;
