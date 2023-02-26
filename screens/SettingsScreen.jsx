@@ -15,7 +15,7 @@ import { openLink } from "../lib/OpenLink";
 
 const SettingsScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
-  const version = "1.0.0";
+  const version = "0.0.2";
   const appVersion = Constants.manifest.version;
   let [fontsLoaded] = useFonts({
     Comfortaa_700Bold,
@@ -120,7 +120,7 @@ const SettingsScreen = ({ navigation }) => {
                     {
                       text: "OK",
                       onPress: () => {
-                        openLink("https://jabed.me/");
+                        openLink("https://github.com/jabedzaman/bozo/releases");
                       },
                     },
                   ]

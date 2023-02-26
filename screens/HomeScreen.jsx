@@ -11,6 +11,7 @@ import { Icon } from "@rneui/base";
 import { useFonts, Comfortaa_700Bold } from "@expo-google-fonts/comfortaa";
 import { useEffect, useState } from "react";
 import Item from "./components/Item";
+import en from "../lib/translations/en.config";
 
 const HomeScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
@@ -75,7 +76,7 @@ const HomeScreen = ({ navigation }) => {
             fontSize: 28,
           }}
         >
-          BOZO
+          {en.bozo}
         </Text>
         <Icon
           name="search"
