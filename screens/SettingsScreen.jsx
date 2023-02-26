@@ -49,10 +49,45 @@ const SettingsScreen = ({ navigation }) => {
             backgroundColor: colorScheme === "dark" ? "#171717" : "#fff",
           }}
         >
-          <ListItem icon="account-circle" title="Account" />
-          <ListItem icon="translate" title="Translations" />
-          <ListItem icon="delete-forever" title="Clear History" />
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Account");
+            }}
+          >
+            <ListItem icon="account-circle" title="Account" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              Alert.alert("Coming soon", "This feature is coming soon.");
+            }}
+          >
+            <ListItem icon="translate" title="Translations" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              Alert.alert(
+                "Clear History",
+                "Are you sure you want to clear your history?",
+                [
+                  {
+                    text: "Cancel",
+                    style: "cancel",
+                  },
+                  {
+                    text: "OK",
+                    onPress: () => {},
+                  },
+                ]
+              );
+            }}
+          >
+            <ListItem icon="delete-forever" title="Clear History" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              Alert.alert("Coming soon", "This feature is coming soon.");
+            }}
+          >
             <ListItem icon="color-lens" title="Themes" />
           </TouchableOpacity>
           <TouchableOpacity

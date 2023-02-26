@@ -14,6 +14,7 @@ import AboutScreen from "./screens/extras/AboutScreen";
 import AnimeScreen from "./screens/AnimeScreen";
 import EpisodeScreen from "./screens/EpisodeScreen";
 import GenereScreen from "./screens/GenereScreen";
+import AccountScreen from "./screens/extras/AccountScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -64,6 +65,13 @@ export default function App() {
             headerShown: false,
           }}
           component={AboutScreen}
+        />
+        <Stack.Screen
+          name="Account"
+          options={{
+            headerShown: false,
+          }}
+          component={AccountScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

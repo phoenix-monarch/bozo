@@ -2,9 +2,18 @@ import { View, Text, useColorScheme } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Icon } from "@rneui/base";
+import { useFonts, Comfortaa_700Bold } from "@expo-google-fonts/comfortaa";
+import Constants from "expo-constants";
 
 const AboutScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
+  let [fontsLoaded] = useFonts({
+    Comfortaa_700Bold,
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
+  const appVersion = Constants.manifest.version;
   return (
     <SafeAreaView
       style={{
@@ -38,6 +47,7 @@ const AboutScreen = ({ navigation }) => {
           style={{
             color: colorScheme === "dark" ? "#fff" : "#000",
             fontSize: 28,
+            fontFamily: "Comfortaa_700Bold",
           }}
         >
           BOZO
@@ -48,7 +58,7 @@ const AboutScreen = ({ navigation }) => {
             fontSize: 16,
           }}
         >
-          v1.0.0
+          v{appVersion}
         </Text>
       </View>
       <View
