@@ -1,7 +1,7 @@
 import { View, Text, useColorScheme } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Icon } from "@rneui/base";
+import { Icon, Image } from "@rneui/base";
 import { useFonts, Comfortaa_700Bold } from "@expo-google-fonts/comfortaa";
 import Constants from "expo-constants";
 
@@ -43,6 +43,12 @@ const AboutScreen = ({ navigation }) => {
           height: "80%",
         }}
       >
+        <Image
+          source={{
+            uri: "https://raw.githubusercontent.com/jabedzaman/bozo/main/assets/adaptive-icon.png ",
+          }}
+          style={{ width: 80, height: 80 }}
+        />
         <Text
           style={{
             color: colorScheme === "dark" ? "#fff" : "#000",

@@ -92,7 +92,9 @@ const SettingsScreen = ({ navigation }) => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              openLink("https://jabed.me/");
+              openLink(
+                "https://github.com/jabedzaman/bozo/issues/new?assignees=&labels=enhancement&template=feature_request.md&title="
+              );
             }}
           >
             <ListItem icon="thumb-up" title="Feedback and suggestions" />
