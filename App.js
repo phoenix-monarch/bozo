@@ -13,6 +13,7 @@ import LibraryScreen from "./screens/LibraryScreen";
 import AboutScreen from "./screens/extras/AboutScreen";
 import AnimeScreen from "./screens/AnimeScreen";
 import EpisodeScreen from "./screens/EpisodeScreen";
+import GenereScreen from "./screens/GenereScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -49,6 +50,13 @@ export default function App() {
             headerShown: false,
           }}
           component={SearchScreen}
+        />
+        <Stack.Screen
+          name="Genere"
+          options={{
+            headerShown: false,
+          }}
+          component={GenereScreen}
         />
         <Stack.Screen
           name="About"

@@ -15,7 +15,7 @@ import { openLink } from "../lib/OpenLink";
 
 const SettingsScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
-  const version = "1.0.1";
+  const version = "1.0.0";
   const appVersion = Constants.manifest.version;
   let [fontsLoaded] = useFonts({
     Comfortaa_700Bold,

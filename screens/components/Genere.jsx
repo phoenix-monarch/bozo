@@ -1,7 +1,9 @@
-import { View, Text } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const Genere = (props) => {
+  const navigation = useNavigation();
   const backgroundColors = [
     "#F2CD5C",
     "#FCE22A",
@@ -11,21 +13,28 @@ const Genere = (props) => {
     "#E0144C",
   ];
   return (
-    <View
+    <TouchableOpacity
       style={{
         backgroundColor:
           backgroundColors[Math.floor(Math.random() * backgroundColors.length)],
         height: 100,
+        width: 170,
         alignContent: "center",
         justifyContent: "flex-end",
         borderRadius: 10,
         marginVertical: 10,
+        marginHorizontal: 5,
       }}
+      onPress={
+        props.name
+          ? () => navigation.navigate("Genere", { name: props.name })
+          : null
+      }
     >
       <Text
         style={{
           color: "#fff",
-          fontSize: 28,
+          fontSize: 24,
           paddingHorizontal: 10,
           marginBottom: 10,
           fontWeight: "bold",
@@ -34,7 +43,7 @@ const Genere = (props) => {
       >
         {props.name ? props.name : "No Name"}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

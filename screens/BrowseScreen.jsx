@@ -44,14 +44,56 @@ const BrowseScreen = ({ navigation }) => {
           placeholder="Search"
           onPressIn={() => navigation.navigate("Search")}
         />
-        <Genere name="action" />
-        <Genere name="adventure" />
-        <Genere name="animation" />
-        <Genere name="comedy" />
-        <Genere name="drama" />
-        <Genere name="fantasy" />
-        <Genere name="horror" />
-        <Genere name="mystery" />
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          <Genere name="action" />
+          <Genere name="adventure" />
+          <Genere name="cars" />
+          <Genere name="comedy" />
+          <Genere name="crime" />
+          <Genere name="dementia" />
+          <Genere name="demons" />
+          <Genere name="drama" />
+          <Genere name="dub" />
+          <Genere name="ecchi" />
+          <Genere name="family" />
+          <Genere name="fantasy" />
+          <Genere name="harem" />
+          <Genere name="historical" />
+          <Genere name="horror" />
+          <Genere name="josei" />
+          <Genere name="kids" />
+          <Genere name="magic" />
+          <Genere name="martial-arts" />
+          <Genere name="mecha" />
+          <Genere name="military" />
+          <Genere name="mmusic" />
+          <Genere name="mystery" />
+          <Genere name="parody" />
+          <Genere name="police" />
+          <Genere name="psychological" />
+          <Genere name="romance" />
+          <Genere name="samurai" />
+          <Genere name="school" />
+          <Genere name="sci-fi" />
+          <Genere name="seinen" />
+          <Genere name="shoujo" />
+          <Genere name="shouji-ai" />
+          <Genere name="slice-of-life" />
+          <Genere name="space" />
+          <Genere name="sports" />
+          <Genere name="super-power" />
+          <Genere name="supernatural" />
+          <Genere name="suspense" />
+          <Genere name="thriller" />
+          <Genere name="vampire" />
+          <Genere name="yaoi" />
+          <Genere name="yuri" />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
