@@ -4,15 +4,19 @@ import {
   ScrollView,
   View,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Constants from "expo-constants";
 import { useFonts, Comfortaa_700Bold } from "@expo-google-fonts/comfortaa";
 import ListItem from "./components/ListItem";
+import { openLink } from "../lib/OpenLink";
 
 const SettingsScreen = ({ navigation }) => {
   const colorScheme = useColorScheme();
-
+  const version = "1.0.1";
+  const appVersion = Constants.manifest.version;
   let [fontsLoaded] = useFonts({
     Comfortaa_700Bold,
   });
@@ -48,6 +52,49 @@ const SettingsScreen = ({ navigation }) => {
           <ListItem icon="account-circle" title="Account" />
           <ListItem icon="translate" title="Translations" />
           <ListItem icon="delete-forever" title="Clear History" />
+          <TouchableOpacity onPress={() => {}}>
+            <ListItem icon="color-lens" title="Themes" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              openLink("https://jabed.me/");
+            }}
+          >
+            <ListItem icon="thumb-up" title="Feedback and suggestions" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              openLink("https://patreon.com/jabedzaman");
+            }}
+          >
+            <ListItem icon="attach-money" title="Support" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              if (appVersion !== version) {
+                Alert.alert(
+                  "Update available",
+                  `Version ${version} is available. Would you like to update?`,
+                  [
+                    {
+                      text: "Cancel",
+                      style: "cancel",
+                    },
+                    {
+                      text: "OK",
+                      onPress: () => {
+                        openLink("https://jabed.me/");
+                      },
+                    },
+                  ]
+                );
+              } else {
+                Alert.alert("No updates available", "You are up to date.");
+              }
+            }}
+          >
+            <ListItem icon="update" title="Check for updates" />
+          </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("About");
