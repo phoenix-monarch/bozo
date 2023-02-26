@@ -23,7 +23,6 @@ const AnimeScreen = () => {
         `https://animeapi.jabed.me/zoro/info/${animeid}`
       );
       setInfo(response.data);
-      console.log("episodes 😔", response.data.episodes);
       setLoading(false);
     } catch (err) {
       setLoading(false);
