@@ -1,4 +1,10 @@
-import { useColorScheme, Text, View, ScrollView } from "react-native";
+import {
+  useColorScheme,
+  Text,
+  View,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
@@ -7,15 +13,18 @@ import { Icon, Image } from "@rneui/base";
 import axios from "axios";
 import BoxList from "./components/BoxList";
 import { Video } from "expo-av";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const EpisodeScreen = () => {
   const [episodeinfo, setEpisodeInfo] = useState([]);
   const [animeinfo, setAnimeInfo] = useState([]);
+  const [orientation, setOrientation] = useState("PORTRAIT_UP");
   const route = useRoute();
   const navigation = useNavigation();
   const colorScheme = useColorScheme();
   const { episodeId, episodeName, epNum, image, animeName, animeId } =
     route.params;
+
   const getEpisodeInfo = async () => {
     try {
       const response = await axios.get(
@@ -36,6 +45,19 @@ const EpisodeScreen = () => {
     getEpisodeInfo();
     getAnimeInfo();
   }, []);
+  const moviemode = async () => {
+    if (orientation === "PORTRAIT_UP") {
+      await ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.LANDSCAPE
+      );
+      setOrientation("LANDSCAPE");
+    } else {
+      await ScreenOrientation.lockAsync(
+        ScreenOrientation.OrientationLock.PORTRAIT_UP
+      );
+      setOrientation("PORTRAIT_UP");
+    }
+  };
   return (
     <SafeAreaView
       style={{
@@ -65,28 +87,51 @@ const EpisodeScreen = () => {
           {animeName}
         </Text>
       </View>
-      <ScrollView>
-        <View
-          style={{
-            paddingVertical: 10,
-          }}
-        >
-          <Video
-            source={{ uri: episodeinfo?.sources?.[0]?.file }}
-            useNativeControls
-            resizeMode="contain"
-            style={{ width: "100%", height: 300 }}
-          />
-        </View>
-        <Text
-          style={{
-            color: colorScheme === "dark" ? "#fff" : "#000",
-            fontSize: 18,
-          }}
-        >
-          {episodeName} - {epNum}
-        </Text>
-        {animeinfo?.episodes?.length && (
+
+      {animeinfo?.episodes?.length && (
+        <ScrollView>
+          <View
+            style={{
+              paddingVertical: 10,
+            }}
+          >
+            <Video
+              source={{ uri: episodeinfo?.sources?.[0]?.file }}
+              useNativeControls
+              PosterComponent={
+                <Image
+                  source={{ uri: image }}
+                  resizeMode="contain"
+                  style={{ width: "100%", height: 300 }}
+                />
+              }
+              resizeMode="contain"
+              style={{ width: "100%", height: 300 }}
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Text
+              style={{
+                color: colorScheme === "dark" ? "#fff" : "#000",
+                fontSize: 18,
+              }}
+            >
+              {episodeName} - {epNum}
+            </Text>
+            <View>
+              <Icon
+                name="movie"
+                color={colorScheme === "dark" ? "#fff" : "#000"}
+                size={18}
+                onPress={moviemode}
+              />
+            </View>
+          </View>
           <View>
             <View
               style={{
@@ -127,8 +172,20 @@ const EpisodeScreen = () => {
               currentEpisode={epNum}
             />
           </View>
-        )}
-      </ScrollView>
+        </ScrollView>
+      )}
+
+      {!animeinfo?.episodes?.length && (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      )}
     </SafeAreaView>
   );
 };
