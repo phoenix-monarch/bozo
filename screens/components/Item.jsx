@@ -1,16 +1,26 @@
 import { Image } from "@rneui/base";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { useColorScheme } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Item = (props) => {
   const colorScheme = useColorScheme();
+  const navigation = useNavigation();
   const displaytitle =
     props.title.length > 20 ? props.title.slice(0, 20) + "..." : props.title;
   return (
-    <View
+    <TouchableOpacity
       style={{
         padding: 10,
         maxWidth: "33%",
+      }}
+      onPress={() => {
+        navigation.navigate("Anime", {
+          title: props.title,
+          image: props.image,
+          status: props.status,
+          animeid: props.animeid,
+        });
       }}
     >
       <View>
@@ -37,7 +47,7 @@ const Item = (props) => {
           {props.status}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

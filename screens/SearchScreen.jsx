@@ -71,6 +71,7 @@ const SearchScreen = () => {
           {results.map((item, key) => (
             <Item
               key={key}
+              animeid={item.animeId}
               title={item.animeTitle}
               image={item.animeImg}
               status={item.status}

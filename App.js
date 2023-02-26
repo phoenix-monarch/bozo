@@ -11,6 +11,8 @@ import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import BrowseScreen from "./screens/BrowseScreen";
 import LibraryScreen from "./screens/LibraryScreen";
 import AboutScreen from "./screens/extras/AboutScreen";
+import AnimeScreen from "./screens/AnimeScreen";
+import EpisodeScreen from "./screens/EpisodeScreen";
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -26,6 +28,20 @@ export default function App() {
             headerShown: false,
           }}
           component={Tabs}
+        />
+        <Stack.Screen
+          name="Anime"
+          options={{
+            headerShown: false,
+          }}
+          component={AnimeScreen}
+        />
+        <Stack.Screen
+          name="Episode"
+          options={{
+            headerShown: false,
+          }}
+          component={EpisodeScreen}
         />
         <Stack.Screen
           name="Search"

@@ -35,9 +35,9 @@ const HomeScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    getRecentEpisodes();
-    getPopularAnime();
-    getAnimeMovies();
+    // getRecentEpisodes();
+    // getPopularAnime();
+    // getAnimeMovies();
   }, []);
 
   let [fontsLoaded] = useFonts({
