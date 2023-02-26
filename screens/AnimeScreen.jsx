@@ -7,7 +7,7 @@ import { useRoute } from "@react-navigation/native";
 import { useNavigation } from "@react-navigation/native";
 import { Icon, Image } from "@rneui/base";
 import EpisodeItem from "./components/EpisodeItem";
-import Lottie from "lottie-react-native";
+import { saveSearch } from "../lib/SaveSearch";
 
 const AnimeScreen = () => {
   const route = useRoute();
@@ -80,7 +80,7 @@ const AnimeScreen = () => {
               style={{
                 color: colorScheme === "dark" ? "#fff" : "#000",
                 fontSize: 20,
-                maxWidth: 200,
+                width: 220,
                 paddingLeft: 10,
                 fontWeight: "bold",
               }}
@@ -112,6 +112,20 @@ const AnimeScreen = () => {
               </Text>
             )}
           </View>
+          <Icon
+            name="playlist-add"
+            style={{ paddingLeft: 10, marginTop: 120 }}
+            color="white"
+            onPress={() => {
+              saveSearch(title, animeid, image);
+              Alert.alert("Saved", "Added to library", [
+                {
+                  text: "OK",
+                  style: "cancel",
+                },
+              ]);
+            }}
+          />
         </View>
         {loading && (
           <ActivityIndicator

@@ -1,11 +1,15 @@
 import { useColorScheme, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts, Comfortaa_600SemiBold } from "@expo-google-fonts/comfortaa";
 import Lottie from "lottie-react-native";
+import { loadSearches } from "../lib/LoadSearches";
 
 const LibraryScreen = () => {
   const colorScheme = useColorScheme();
+  useEffect(() => {
+    loadSearches();
+  }, []);
   const [loaded] = useFonts({
     Comfortaa_600SemiBold,
   });
